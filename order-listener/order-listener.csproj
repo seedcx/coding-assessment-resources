@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <RootNamespace>Seed.CodingAssessment</RootNamespace>
+        <AssemblyName>order-listener</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Be.IO-netstandard" Version="1.0.3" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "replay-server", "replay-server\replay-server.csproj", "{76A59488-B399-4448-B589-C7F672D7DAB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "order-listener", "order-listener\order-listener.csproj", "{1C4017B2-EC56-436E-9FB1-4FAA335E16CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76A59488-B399-4448-B589-C7F672D7DAB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76A59488-B399-4448-B589-C7F672D7DAB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76A59488-B399-4448-B589-C7F672D7DAB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76A59488-B399-4448-B589-C7F672D7DAB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C4017B2-EC56-436E-9FB1-4FAA335E16CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4017B2-EC56-436E-9FB1-4FAA335E16CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4017B2-EC56-436E-9FB1-4FAA335E16CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4017B2-EC56-436E-9FB1-4FAA335E16CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
