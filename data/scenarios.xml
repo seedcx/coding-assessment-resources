@@ -1,0 +1,48 @@
+<scenarios>
+    <scenario>
+        <input>
+            <file>data.dat</file>
+            <sha1>d3b9af4b39dd860da23f77e9fce8da956267e960</sha1>
+        </input>
+        <parameters>
+            <symbol>BTC-USD</symbol>
+            <side>BUY</side>
+            <maxOrderSize>100</maxOrderSize>
+            <vwapSeconds>20</vwapSeconds>
+            <orderDelaySeconds>10</orderDelaySeconds>
+        </parameters>
+        <expectedOrders>
+            <order timeStamp="1556564220920459606" symbol="BTC-USD" side="B" price="5006" size="89" />
+            <order timeStamp="1556564360070459587" symbol="BTC-USD" side="B" price="5001" size="11" />
+            <order timeStamp="1556564370620459564" symbol="BTC-USD" side="B" price="5001" size="77" />
+            <order timeStamp="1556564460470459552" symbol="BTC-USD" side="B" price="5001" size="74" />
+            <order timeStamp="1556564470670459612" symbol="BTC-USD" side="B" price="5001" size="75" />
+            <order timeStamp="1556564570970459519" symbol="BTC-USD" side="B" price="5001" size="11" />
+            <order timeStamp="1556564582520459548" symbol="BTC-USD" side="B" price="5001" size="61" />
+            <order timeStamp="1556564621870459546" symbol="BTC-USD" side="B" price="5001" size="27" />
+        </expectedOrders>
+    </scenario>
+    <scenario>
+        <input>
+            <file>data.dat</file>
+            <sha1>d3b9af4b39dd860da23f77e9fce8da956267e960</sha1>
+        </input>
+        <parameters>
+            <symbol>BTC-USDT</symbol>
+            <side>BUY</side>
+            <maxOrderSize>100</maxOrderSize>
+            <vwapSeconds>20</vwapSeconds>
+            <orderDelaySeconds>10</orderDelaySeconds>
+        </parameters>
+        <expectedOrders>
+            <order timeStamp="1556564221170459606" symbol="BTC-USDT" side="B" price="4503" size="80" />
+            <order timeStamp="1556564258670459525" symbol="BTC-USDT" side="B" price="4501" size="8" />
+            <order timeStamp="1556564377520459542" symbol="BTC-USDT" side="B" price="4501" size="63" />
+            <order timeStamp="1556564413870459549" symbol="BTC-USDT" side="B" price="4501" size="90" />
+            <order timeStamp="1556564426170459524" symbol="BTC-USDT" side="B" price="4501" size="78" />
+            <order timeStamp="1556564436220459537" symbol="BTC-USDT" side="B" price="4501" size="83" />
+            <order timeStamp="1556564496770459535" symbol="BTC-USDT" side="B" price="4501" size="52" />
+            <order timeStamp="1556564621020459582" symbol="BTC-USDT" side="B" price="4501" size="98" />
+        </expectedOrders>
+    </scenario>
+</scenarios>
