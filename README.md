@@ -15,18 +15,18 @@ Provided tools include:
 To build and run the tools, you will need to install the free and open source `.NET Core SDK 2.2`.
 
 Simply follow the "Build Apps" instructions relevant to your OS distribution:
-https://dotnet.microsoft.com/download
+> https://dotnet.microsoft.com/download
 
 ## Replay Server
 
 `replay-server` is a helpful application which plays back market data messages contained in data files.
 
-It listens for incoming TCP connections. Upon accepting a client, the `replay-server` immediately begins sending market data records one-by-one using the binary packet format defined in the coding assessment. Byte order of the wire packets can be specified as either `big` or `little` using command line argument.
+It listens for incoming TCP connections. Upon accepting a client, the `replay-server` immediately begins sending market data records one-by-one using the binary packet format defined in the coding assessment.
 
 ### Usage
 
 ```bash
-> dotnet run -p replay-server FILE.DAT PORT BYTE_ORDER
+> dotnet run -p replay-server FILE.DAT PORT
 ```
 
 where
@@ -35,13 +35,11 @@ where
 
 `PORT` - port to listen for connections on (ex: 65500)
 
-`BYTE_ORDER` - specifies whether the data on the wire should be encoded using `big` or `little` endian order. Valid values are `big` or `little`
-
 
 ### Example output
 
 ```text
-> dotnet run -p replay-server ./data/BTC-USD.dat 5000 big
+> dotnet run -p replay-server ./data/BTC-USD.dat 5000
 Accepting replay clients on: 0.0.0.0:5000
 ...snip...
 224606779726955|Q|BTC-USD|10688|32|10688|12
@@ -56,24 +54,20 @@ Accepting replay clients on: 0.0.0.0:5000
 
 `order-listener` is a simple application which accepts incoming connections, interprets the data as order messages, and prints them to screen. Use this tool to visualize orders transmitted by your application.
 
-Both `big` and `little` byte orders are supported. Simplify specify the mode on command line.
-
 ### Usage
 
 ```bash
-> dotnet run -p order-listener PORT BYTE_ORDER
+> dotnet run -p order-listener PORT
 ```
 
 where:
 
 `PORT` - port to listen for connections on (ex: `65511`)
 
-`BYTE_ORDER` - specifies whether the data on the wire is encoded using `big` or `little` endian order. Valid values are `big` or `little`
-
 ### Example output
 
 ```text
-> dotnet run -p order-listener 6000 little
+> dotnet run -p order-listener 6000
 Accepting order clients on: 0.0.0.0:6000
 Accepted connection: 127.0.0.1:52252
 <order timeStamp="1556564220920459606" symbol="BTC-USD" side="B" price="5006" size="89" />
