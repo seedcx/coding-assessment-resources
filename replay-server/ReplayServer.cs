@@ -10,17 +10,15 @@ namespace Seed.CodingAssessment
     {
         static void Main(string[] args)
         {
-            if (args.Length != 3)
+            if (args.Length != 2)
             {
                 Console.WriteLine("Usage:");
-                Console.WriteLine("replay-server file.dat port byte_order");
+                Console.WriteLine("replay-server file.dat port");
                 Console.WriteLine();
                 Console.WriteLine("\tfile.dat - path to file containing market data to replay");
                 Console.WriteLine("\tport - port to listen for connections on (ex: 65511)");
-                Console.WriteLine("\tbyte_order - whether data is encoded using 'big' or 'little' endian order");
-                Console.WriteLine("\t             valid values: 'big' or 'little'");
                 Console.WriteLine();
-                Console.WriteLine("Example:   65511 big");
+                Console.WriteLine("Example: ./data/data.dat 65500");
                 Console.WriteLine();
                 Console.WriteLine();
                 Environment.Exit(1);
@@ -34,7 +32,6 @@ namespace Seed.CodingAssessment
             
             
             var port = int.Parse(args[1]);
-            var isDataBigEndian = !args[2].ToLowerInvariant().StartsWith('l');
 
             var tcpListener = new TcpListener(new IPEndPoint(IPAddress.Any, port));
             tcpListener.Start();
@@ -50,7 +47,7 @@ namespace Seed.CodingAssessment
                     Console.WriteLine($"Accepted connection: {client.Client.RemoteEndPoint}");
                     
                     using (var stream = client.GetStream())
-                    using (var writer = GetWriter(stream, isDataBigEndian))
+                    using (var writer = new BinaryWriter(stream, Encoding.ASCII, true))
                     {
                         foreach (var line in File.ReadLines(datFile.FullName))
                         {
@@ -74,16 +71,6 @@ namespace Seed.CodingAssessment
 
                 Console.WriteLine("client disconnected");
             }
-        }
-        
-        static BinaryWriter GetWriter(Stream stream, bool bigEndian)
-        {
-            if (bigEndian)
-            {
-                return new Be.IO.BeBinaryWriter(stream, Encoding.ASCII, true);
-            }
-
-            return new BinaryWriter(stream, Encoding.ASCII, true);
         }
     }
 }

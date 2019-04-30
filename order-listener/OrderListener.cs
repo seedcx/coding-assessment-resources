@@ -10,23 +10,18 @@ namespace Seed.CodingAssessment
     {
         static void Main(string[] args)
         {
-            if (args.Length != 2)
+            if (args.Length != 1)
             {
                 Console.WriteLine("Usage:");
-                Console.WriteLine("order-listener port byte_order");
+                Console.WriteLine("order-listener port");
                 Console.WriteLine();
                 Console.WriteLine("\tport - port to listen for connections on (ex: 65511)");
-                Console.WriteLine("\tbyte_order - whether data is encoded using 'big' or 'little' endian order");
-                Console.WriteLine("\t             valid values: 'big' or 'little'");
-                Console.WriteLine();
-                Console.WriteLine("Example:   65512 big");
                 Console.WriteLine();
                 Console.WriteLine();
                 Environment.Exit(1);
             }
 
             var port = int.Parse(args[0]);
-            var isDataBigEndian = !args[1].ToLowerInvariant().StartsWith('l');
 
             var tcpListener = new TcpListener(new IPEndPoint(IPAddress.Any, port));
             tcpListener.Start();
@@ -42,7 +37,7 @@ namespace Seed.CodingAssessment
                     Console.Error.WriteLine($"Accepted connection: {client.Client.RemoteEndPoint}");
 
                     using (var stream = client.GetStream())
-                    using (var reader = GetReader(stream, isDataBigEndian))
+                    using (var reader = new BinaryReader(stream, Encoding.ASCII, true))
                     {
                         while (client.Connected)
                         {
@@ -70,16 +65,6 @@ namespace Seed.CodingAssessment
 
                 Console.Error.WriteLine("client disconnected");
             }
-        }
-
-        static BinaryReader GetReader(Stream stream, bool bigEndian)
-        {
-            if (bigEndian)
-            {
-                return new Be.IO.BeBinaryReader(stream, Encoding.ASCII, true);
-            }
-
-            return new BinaryReader(stream, Encoding.ASCII, true);
         }
     }
 }

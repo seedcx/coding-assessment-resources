@@ -3,11 +3,8 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp2.1</TargetFramework>
+        <RuntimeIdentifiers>linux-x64</RuntimeIdentifiers>
         <RootNamespace>Seed.CodingAssessment</RootNamespace>
     </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Be.IO-netstandard" Version="1.0.3" />
-    </ItemGroup>
 
 </Project>
